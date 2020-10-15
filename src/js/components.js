@@ -2,22 +2,22 @@ const lightButton = (id, text) => {
   return `<button "type="button" class="btn btn-light mt-5 mb-5" id="${id}">${text}</button>`;
 };
 
-const gameCard = (id, image, name, released, developers, genres, rate, votes) => {
+const gameCard = (id, image, name, released, developers, genres, rate, votes, platforms) => {
   return `
     <div class="mx-auto card bg-dark the-cards show games mb-5" style="width: 18rem" id="card-${id}">
       <img class="card-img-top card-image" src="${image}" alt="Card image cap">
       <div class="card-body mb-3">
         <h4 class="card-title">${name}</h1>
-        <p class="card-text">${released}</p>
+        <small class="card-text">${platforms}</small>
       </div>
       <div class="cards-overlay text-left rounded" id="overlay-${id}" style="word-break: break-word;">
         <div class="m-3">
           <h4>${name}</h4>
+          <h5><span class="badge badge-secondary mr-1">${rate} / 5</span><small class="ratings-count text-muted">${votes} ratings</small></h5>
+          <small>${platforms}</small>
           <h5>${released}</h5>
           <h6>${developers}</h6>
           <p>${genres}</p>
-          <p>Note: ${rate}</p>
-          <p>Nombre de votes: ${votes}</p>
           <button id="detailsBtn" type="button" class="btn btn-light btn-sm" onclick="location.href='#pagedetail/${id}'">En savoir plus</button>
         </div>
       </div>

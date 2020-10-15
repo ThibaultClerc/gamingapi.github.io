@@ -37,7 +37,8 @@ const PageList = (argument = "") => {
                                 response2.developers[0].name,
                                 article.genres.map(genre => genre.name).join(" • "),
                                 response2.rating,
-                                response2.ratings.length
+                                response2.ratings_count,
+                                article.platforms.map(platform => platform.platform.name).join(" • ")
                 )}`;
                 if (argument) {
                   message.innerHTML = `Search: ${gameTitleValue()}`
@@ -57,7 +58,6 @@ const PageList = (argument = "") => {
     } else {
       fetchList("https://api.rawg.io/api/games", cleanedArgument);
     }
-
     
   };
 
@@ -75,8 +75,6 @@ const PageList = (argument = "") => {
     `;
     preparePage();
   };
-
-  render();
 
   const gameTitleValue = () => {
     return searchBar.value;
@@ -99,7 +97,7 @@ const PageList = (argument = "") => {
   searchButton.addEventListener('click', injectSearch)
   searchBar.addEventListener('input', resetView)
 
-  
+  render();
 };
 
 export {PageList};

@@ -9947,7 +9947,7 @@ body {
   height: 100%;
   transition: 0.2s ease;
   text-overflow: hidden;
-  opacity: 90%;
+  opacity: 95%;
 }
 
 .the-cards:hover .cards-overlay {
@@ -9961,4 +9961,41 @@ body {
 
 .rounded-pill {
   border-radius: 1rem;
+}
+
+.main-image {
+  border-radius: 1em;
+}
+
+.card-deck {
+  padding: inherit;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.ilink, .ilink:visited {
+  text-decoration: none;
+  position: relative;
+  color: #069;
+}
+.ilink:after, .ilink:visited:after {
+  content: "";
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  background: white;
+  transition: 0.2s;
+}
+.ilink:hover:after, .ilink:visited:hover:after {
+  width: 100%;
+}
+
+#pageContent {
+  opacity: 0;
+  transition: opacity 3s;
 }

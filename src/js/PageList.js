@@ -6,9 +6,11 @@ const PageList = (argument = "") => {
   const searchButton = document.querySelector("#searchbtn");
   const dateToday = moment(Date.now()).format("YYYY-MM-DD");
   const date365 = moment(Date.now() + 3.154e+10).format("YYYY-MM-DD");
+  let userGames = []
   let showMoreCount = 1
   let totalResults = 0;
   let articles = "";
+  let currentSearchGames = [];
 
   const preparePage = () => {
     let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -48,6 +50,7 @@ const PageList = (argument = "") => {
                   document.querySelector(".page-list .articles").innerHTML += lightButton("showMoreBtn", "Show more");
                   showMoreBtn.addEventListener('click', showMore);
                 }
+                currentSearchGames.push(article)
               });
           });  
         });
@@ -58,7 +61,6 @@ const PageList = (argument = "") => {
     } else {
       fetchList("https://api.rawg.io/api/games", cleanedArgument);
     }
-    
   };
 
   const showMore = () => {
@@ -67,6 +69,7 @@ const PageList = (argument = "") => {
   }
 
   const render = () => {
+    currentSearchGames = [];
     pageContent.innerHTML = `
       <section class="page-list mt-5">
         <h1 class="display-3 font-weight-bold message mb-5"></h1>
@@ -76,6 +79,7 @@ const PageList = (argument = "") => {
     preparePage();
   };
 
+  
   const gameTitleValue = () => {
     return searchBar.value;
   };
@@ -93,6 +97,19 @@ const PageList = (argument = "") => {
       window.location = `#pagelist`;
     }
   }
+
+  
+  pageContent.addEventListener('change',function(e){
+    let checkedGame = currentSearchGames.filter(game => e.target.id.includes(game.id))[0]
+    if (e.target.checked == false) {
+      const index = userGames.indexOf(checkedGame);
+      index > -1 ? userGames.splice(index, 1) : false;
+    } else if (e.target.checked == true) {
+      userGames.push(checkedGame)
+    }
+    console.log(userGames, "userGames")
+  });
+
 
   searchButton.addEventListener('click', injectSearch)
   searchBar.addEventListener('input', resetView)

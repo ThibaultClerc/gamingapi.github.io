@@ -10004,3 +10004,15 @@ body {
   background: black;
   background: linear-gradient(0deg, black 0%, #272727 50%, #272727 80%, black 100%);
 }
+
+.checkbox-container {
+  position: relative;
+}
+
+.custom-checkbox {
+  position: absolute;
+  bottom: 82%;
+  left: 92%;
+  transform: scale(1.5);
+  border-radius: 1em;
+}

@@ -138,3 +138,16 @@ body {
   background: rgb(0,0,0);
   background: $main-gradient;
 }
+
+.checkbox-container {
+  position: relative;
+}
+
+.custom-checkbox {
+  position: absolute;
+  bottom: 82%;
+  left: 92%;
+  transform: scale(1.5);
+  border-radius: 1em;
+  
+}

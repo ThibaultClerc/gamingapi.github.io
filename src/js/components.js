@@ -11,8 +11,12 @@ const gameCard = (id, image, name, released, developers, genres, rate, votes, pl
         <small class="card-text">${platforms}</small>
       </div>
       <div class="cards-overlay text-left rounded" id="overlay-${id}" style="word-break: break-word;">
-        <div class="m-3">
+        <div class="m-3 checkbox-container">
           <h4>${name}</h4>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2 custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="check-${id}">
+            <label class="custom-control-label" for="check-${id}"></label>
+          </div>
           <h5><span class="badge badge-secondary mr-1">${rate} / 5</span><small class="ratings-count text-muted">${votes} ratings</small></h5>
           <small>${platforms}</small>
           <h5>${released}</h5>

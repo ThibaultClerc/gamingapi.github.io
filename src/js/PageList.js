@@ -17,24 +17,14 @@ const PageList = (argument = "") => {
       let message = document.querySelector("h1.message")
       message.innerHTML = "New and trending"
       if (argument) {
-        if (showMoreCount > 3) {
-          finalURL = `${url}?search=${argument}&page_size=${totalResults}`;
-        } else {
-          finalURL = `${url}?search=${argument}&page_size=9&page=${showMoreCount}`;
-        }
+        finalURL = `${url}?search=${argument}&page_size=9&page=${showMoreCount}`;
       }
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
           totalResults = response.count
           let searchModulo = totalResults / 9
-          let results = []
-          if (showMoreCount > 3) {
-            results = response.results.splice(0, 26)
-            console.log(results)
-          } else {
-            results = response.results
-          }
+          let results = response.results
           results.forEach((article) => {
             fetch(`https://api.rawg.io/api/games/${article.id}`)
               .then((response2) => response2.json())
@@ -53,7 +43,7 @@ const PageList = (argument = "") => {
                   message.innerHTML = `Search: ${gameTitleValue()}`
                 }
                 document.querySelector(".page-list .articles").innerHTML = articles;
-                if (searchModulo > 0 && showMoreCount < 4) {
+                if (searchModulo > 0 && showMoreCount < 3) {
                   document.querySelector(".page-list .articles").innerHTML += lightButton("showMoreBtn", "Show more");
                   showMoreBtn.addEventListener('click', showMore);
                 }

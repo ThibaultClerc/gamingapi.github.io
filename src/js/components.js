@@ -36,7 +36,6 @@ const youtubeCard = (src) => {
   </div>`
 }
 
-
 const suggestionsCard = (id, image, name, released, genres) => {
   return `
     <div class="card bg-dark mb-5" style="width: 18rem" id="suggestion-${id}">
@@ -50,4 +49,8 @@ const suggestionsCard = (id, image, name, released, genres) => {
     </div>`
 }
 
-export { lightButton, gameCard, screenshotCard, suggestionsCard, youtubeCard }
+const buyLink = (link, name) => {
+  return `<a class="dropdown-item text-light bg-dark" href="${link}" target="_blank">${name}</a>`
+}
+
+export { lightButton, gameCard, screenshotCard, suggestionsCard, youtubeCard, buyLink }

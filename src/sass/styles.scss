@@ -132,3 +132,9 @@ a {
   opacity: 0; 
   transition: opacity 3s;
 }
+
+
+body {
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(39,39,39,1) 50%, rgba(39,39,39,1) 80%, rgba(0,0,0,1) 100%);
+}

@@ -1,4 +1,4 @@
-import { screenshotCard, suggestionsCard, youtubeCard } from "./components"
+import { screenshotCard, suggestionsCard, youtubeCard, buyLink } from "./components"
 
 const PageDetail = (argument) => {
   const preparePage = () => {
@@ -11,7 +11,7 @@ const PageDetail = (argument) => {
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
-          let { name, released, description, background_image, developers, tags, genres, publishers, platforms, website, clip, rating, ratings_count } = response;
+          let { name, released, description, background_image, developers, tags, genres, publishers, platforms, website, clip, rating, ratings_count,stores } = response;
 
           let articleDOM = document.querySelector(".page-detail .article");
 
@@ -32,6 +32,7 @@ const PageDetail = (argument) => {
           }
           articleDOM.querySelector("h4 span").innerHTML = `${rating} / 5`;
           articleDOM.querySelector("small.ratings-count").innerHTML = `${ratings_count} ratings`;
+          articleDOM.querySelector(".dropdown-menu").innerHTML = stores.map(store => buyLink(store.url, store.store.name)).join("")
         });
     };
 
@@ -128,7 +129,14 @@ const PageDetail = (argument) => {
               <small class="publishers mb-5"><strong>Publishers:</strong>  <span></span></small><br>
               <a class="website ilink text-decoration-none text-info" href="" target="_blank">Visit website</a>
               <hr>
-              
+              <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Buy
+                </button>
+                <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                </div>
+              </div>
+              <hr>
               <p class="description"></p>
               <hr>
               <video class="video card-img-top card-image" playsinline="" loop="" src="" controls style="outline: none;"></video>

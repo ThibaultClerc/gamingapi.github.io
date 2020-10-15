@@ -9999,3 +9999,8 @@ a {
   opacity: 0;
   transition: opacity 3s;
 }
+
+body {
+  background: black;
+  background: linear-gradient(0deg, black 0%, #272727 50%, #272727 80%, black 100%);
+}

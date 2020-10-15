@@ -150,7 +150,7 @@ const PageDetail = (argument) => {
           </div>
           <div class="row">
           <h2>Similar games</h2>
-            <div class="card-columns suggestions-container mt-3">
+            <div class="card-columns suggestions-container mt-3 mx-auto">
             </div>
           </div>
         </div>

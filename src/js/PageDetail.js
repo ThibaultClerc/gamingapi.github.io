@@ -19,11 +19,11 @@ const PageDetail = (argument) => {
           articleDOM.querySelector("h4.release-date span").innerHTML = released;
           articleDOM.querySelector("p.description").innerHTML = description;
           articleDOM.querySelector("img").src = background_image;
-          articleDOM.querySelector("h6.developers span").innerHTML = developers.map(dev => dev.name).join(" • ")
-          articleDOM.querySelector("small.tags").innerHTML = tags.map(tag => tag.name).join(" • ")
-          articleDOM.querySelector("small.genres").innerHTML = genres.map(genre => genre.name).join(" • ")
-          articleDOM.querySelector("small.publishers span").innerHTML = publishers.map(publisher => publisher.name).join(" • ")
-          articleDOM.querySelector("small.platforms").innerHTML = platforms.map(platform => platform.platform.name).join(" • ")
+          articleDOM.querySelector("h6.developers span").innerHTML = developers.map(dev => `<a class="ilink" href='#pagelist/&developers=${dev.id}'>${dev.name}</a>`).join(" • ")
+          articleDOM.querySelector("small.tags").innerHTML = tags.map(tag => `<a class="ilink" href='#pagelist/&tags=${tag.id}'>${tag.name.charAt(0).toUpperCase() + tag.name.slice(1)}</a>`).join(" • ")
+          articleDOM.querySelector("small.genres").innerHTML = genres.map(genre => `<a class="ilink" href='#pagelist/&genres=${genre.id}'>${genre.name}</a>`).join(" • ")
+          articleDOM.querySelector("small.publishers span").innerHTML = publishers.map(publisher => `<a class="ilink" href='#pagelist/&publishers=${publisher.id}'>${publisher.name}</a>`).join(" • ")
+          articleDOM.querySelector("small.platforms").innerHTML = platforms.map(platform => `<a class="ilink" href='#pagelist/&platforms=${platform.platform.id}'>${platform.platform.name}</a>`).join(" • ")
           articleDOM.querySelector("a.website").href = website;
           if (clip !== null) {
             articleDOM.querySelector("video").src = clip.clips.full;
@@ -110,24 +110,24 @@ const PageDetail = (argument) => {
               
               <img class="card-img-top card-image main-image" src="" alt="Card image cap">
               <hr>
-              <h3 class="mb-3">Screenshots</h3>
+              <h3 class="mb-3 font-weight-bold text-info">Screenshots</h3>
               <div class="card-deck screenshots-container">
               </div>
               <hr>
-              <h3 class="mb-3 youtube-title">Youtube videos</h3>
+              <h3 class="mb-3 youtube-title text-info font-weight-bold">Youtube videos</h3>
               <div class="card-deck youtube-container">
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <small class="genres"></small>
-              <h1 class="title display-4 text-bold"></h1>
+              <h1 class="title display-4 text-bold text-info font-weight-bold"></h1>
               <small class="platforms mb-5 text-muted"></small><br>
               <hr>
               <h4><span class="badge badge-secondary mr-3"></span><small class="ratings-count text-muted"></small></h4>
               <h4 class="release-date"><span></span></h4>
               <h6 class="developers"><span></span></h6>
               <small class="publishers mb-5"><strong>Publishers:</strong>  <span></span></small><br>
-              <a class="website ilink text-decoration-none text-info" href="" target="_blank">Visit website</a>
+              <a class="website text-decoration-none text-info" href="" target="_blank">Visit website</a>
               <hr>
               <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -149,7 +149,7 @@ const PageDetail = (argument) => {
             
           </div>
           <div class="row">
-          <h2>Similar games</h2>
+          <h2 class="display-4 text-info font-weight-bold">Similar games</h2>
             <div class="card-columns suggestions-container mt-3 mx-auto">
             </div>
           </div>

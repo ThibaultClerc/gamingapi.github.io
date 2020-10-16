@@ -4,8 +4,8 @@ const lightButton = (id, text) => {
 
 const gameCard = (id, image, name, released, developers, genres, rate, votes, platforms) => {
   return `
-    <div class="mx-auto card bg-dark the-cards show games mb-5" style="width: 18rem" id="card-${id}">
-      <img class="card-img-top card-image" src="${image}" alt="Card image cap">
+    <div class="mx-auto card bg-dark the-cards show games mb-5 text-left" style="width: 18rem" id="card-${id}">
+      <img class="card-img-top card-image game-card-image" src="${image}" alt="Card image cap">
       <div class="card-body mb-3">
         <h4 class="card-title">${name}</h1>
         <small class="card-text">${platforms}</small>
@@ -53,5 +53,12 @@ const buyLink = (link, name) => {
   return `<a class="dropdown-item text-light bg-dark" href="${link}" target="_blank">${name}</a>`
 }
 
+// const platformsLogo = (name) => {
+//   switch (name) {
+//     case 'Oranges':
+//       console.log('Oranges are $0.59 a pound.');
+//       break;
+//     case 'Mangoes':
+// }
 
 export { lightButton, gameCard, screenshotCard, suggestionsCard, youtubeCard, buyLink, }

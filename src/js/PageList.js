@@ -12,10 +12,12 @@ const PageList = (argument = "") => {
 
   const preparePage = () => {
     let cleanedArgument = argument.replace(/\s+/g, "-");
+
     const fetchList = (url, argument) => {
       let finalURL = url;
       let message = document.querySelector("h1.message")
       message.innerHTML = "New and trending"
+      
       if (argument) {
         finalURL = `${url}?search=${argument}&page_size=9&page=${showMoreCount}`;
       }
@@ -68,8 +70,8 @@ const PageList = (argument = "") => {
   const render = () => {
     pageContent.innerHTML = `
       <section class="page-list mt-5">
-        <h1 class="display-3 font-weight-bold message mb-5"></h1>
-        <div class="articles card-columns">...loading</div>
+        <h1 class="display-3 font-weight-bold message mb-5 text-info"></h1>
+        <div class="articles card-columns text-center">...loading</div>
       </section>
     `;
     preparePage();
@@ -109,7 +111,7 @@ const PageList = (argument = "") => {
   searchBar.addEventListener('input', resetView)
 
   render();
-  getPlatforms();
+  // getPlatforms();
 };
 
 export {PageList};
